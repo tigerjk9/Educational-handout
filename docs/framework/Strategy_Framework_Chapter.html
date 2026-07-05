@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3장 · 6대 영역 전략 프레임워크 — 공교육 AX 전략 핸드북</title>
+  <style>
+    :root {
+      --bg: #ffffff;
+      --bg2: #f6f8fa;
+      --bg3: #eef1f4;
+      --border: #d0d7de;
+      --text: #1f2328;
+      --text-dim: #636c76;
+      --accent: #b45309;
+      --accent2: #1a7f37;
+      --accent4: #6639ba;
+      --accent6: #92400e;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans KR', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.85;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+    }
+    .layout { display: flex; min-height: 100vh; }
+    /* ── 사이드바: 장 목차 ── */
+    nav {
+      width: 260px; min-width: 260px;
+      background: var(--bg2);
+      border-right: 1px solid var(--border);
+      position: sticky; top: 0; height: 100vh; overflow-y: auto;
+      padding: 20px 0;
+    }
+    nav .nav-title {
+      font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em;
+      color: var(--text-dim); padding: 0 16px 8px;
+    }
+    nav a {
+      display: block; padding: 6px 16px; color: var(--text-dim);
+      text-decoration: none; font-size: 13px; border-left: 2px solid transparent; transition: all .15s;
+    }
+    nav a:hover { color: var(--accent); background: var(--bg3); border-left-color: var(--accent); }
+    nav .nav-section {
+      margin-top: 12px; padding: 6px 16px 4px; font-size: 11px; font-weight: 600;
+      text-transform: uppercase; letter-spacing: .06em; color: var(--text-dim);
+    }
+    /* ── 본문: 읽기 폭으로 좁힘 ── */
+    main { flex: 1; display: flex; justify-content: center; padding: 56px 48px 96px; overflow-x: hidden; }
+    .reading { width: 100%; max-width: 720px; }
+    .chapter-eyebrow {
+      font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 10px;
+    }
+    h1 { font-size: 2.3rem; font-weight: 700; letter-spacing: -0.01em; line-height: 1.25; margin-bottom: 14px; }
+    .lead { font-size: 1.12rem; color: var(--text-dim); line-height: 1.7; margin-bottom: 8px; }
+    .source-line { font-size: 13px; color: var(--text-dim); margin-bottom: 30px; }
+    .source-line a { color: var(--accent); text-decoration: none; }
+    /* ── 이 장의 요점 박스 ── */
+    .keypoints {
+      background: #fff8f0; border: 1px solid #f3d3a8; border-left: 4px solid var(--accent);
+      border-radius: 8px; padding: 18px 22px; margin: 0 0 40px;
+    }
+    .keypoints .kp-title { font-weight: 700; color: var(--accent6); font-size: 14px; margin-bottom: 8px; }
+    .keypoints ul { margin: 0 0 0 18px; font-size: 14.5px; line-height: 1.85; }
+    /* ── 본문 타이포 ── */
+    h2 {
+      font-size: 1.5rem; font-weight: 700; color: var(--text);
+      margin: 52px 0 14px; scroll-margin-top: 20px; line-height: 1.35;
+    }
+    h3 { font-size: 1.12rem; font-weight: 700; color: var(--accent6); margin: 30px 0 8px; scroll-margin-top: 20px; }
+    p { margin: 14px 0; }
+    p + p { margin-top: 16px; }
+    ul, ol { margin: 12px 0 16px 22px; }
+    li { margin: 6px 0; }
+    /* ── 핵심 인용(풀쿼트) ── */
+    .pullquote {
+      border-left: 3px solid var(--accent); padding: 6px 0 6px 22px; margin: 28px 0;
+      font-size: 1.22rem; line-height: 1.6; color: #2b3138; font-weight: 600;
+    }
+    .pullquote .by { display: block; font-size: 13px; font-weight: 500; color: var(--text-dim); margin-top: 8px; }
+    /* ── 강조 한 줄 ── */
+    .note { background: #fdf2e3; border-left: 3px solid var(--accent); padding: 10px 16px; border-radius: 4px; font-size: 15px; margin: 18px 0; }
+    /* ── 인라인 코드(서술 중 식별자) ── */
+    code { font-family: 'SFMono-Regular','Consolas','Liberation Mono',monospace; font-size: 13px; background: #f6f8fa; border: 1px solid #d0d7de; border-radius: 4px; padding: 1px 6px; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    /* ── 장 이동 ── */
+    .chapter-nav { display: flex; justify-content: space-between; gap: 16px; margin-top: 64px; border-top: 1px solid var(--border); padding-top: 24px; }
+    .chapter-nav a {
+      display: block; flex: 1; padding: 14px 18px; background: var(--bg2);
+      border: 1px solid var(--border); border-radius: 10px; color: var(--text); transition: border-color .15s;
+    }
+    .chapter-nav a:hover { border-color: var(--accent); text-decoration: none; }
+    .chapter-nav .dir { font-size: 12px; color: var(--text-dim); }
+    .chapter-nav .ttl { font-weight: 600; margin-top: 2px; }
+    .chapter-nav .next { text-align: right; }
+    /* ── 표(요약·로드맵용) ── */
+    .tbl-wrap { overflow-x: auto; margin: 16px 0 24px; }
+    table { width: 100%; border-collapse: collapse; font-size: 14px; line-height: 1.6; }
+    th { background: var(--bg3); color: var(--accent6); text-align: left; padding: 9px 12px; border: 1px solid var(--border); font-size: 12.5px; }
+    td { padding: 8px 12px; border: 1px solid var(--border); vertical-align: top; }
+    tr:nth-child(even) td { background: #f6f8fa; }
+    @media (max-width: 640px) {
+      main { padding: 40px 18px 60px; }
+      .chapter-nav { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+<div class="layout">
+
+<nav>
+  <a href="../index.html" style="font-weight:700;color:#b45309;margin-bottom:8px;border-bottom:1px solid #d0d7de;padding-bottom:10px;">← 핸드북 홈</a>
+  <div class="nav-title">3장 · 전략 프레임워크</div>
+  <a href="#s1">왜 프레임워크인가</a>
+  <a href="#s2">영역 ① 거버넌스·비전</a>
+  <a href="#s3">영역 ② 인프라·데이터</a>
+  <a href="#s4">영역 ③ 교원 역량</a>
+  <a href="#s5">영역 ④ 교육과정·수업</a>
+  <a href="#s6">영역 ⑤ 평가·환류</a>
+  <a href="#s7">영역 ⑥ 윤리·안전</a>
+  <a href="#s8">단계별 로드맵</a>
+  <div class="nav-section">다른 장</div>
+  <a href="../overview/AX_Overview_Chapter.html">1장 AX 개관과 공교육의 특수성</a>
+  <a href="../policy/Policy_Trends_Chapter.html">2장 국내외 정책·동향</a>
+  <a href="../practice/Practice_Manual.html">4장 학교 현장 적용</a>
+  <a href="../ethics/Ethics_Safety_Chapter.html">5장 윤리·안전·개인정보</a>
+  <a href="../quiz/Assessment_Quiz.html">6장 점검 문항 / Q&amp;A</a>
+</nav>
+
+<main>
+ <article class="reading">
+  <div class="chapter-eyebrow">3장</div>
+  <h1>6대 영역 전략 프레임워크</h1>
+  <p class="lead">학교와 교육청이 AX를 설계할 때 빠뜨리기 쉬운 것을 빠뜨리지 않게 해 주는 여섯 개의 점검 영역 — 거버넌스, 인프라, 교원 역량, 교육과정, 평가, 윤리 — 을 하나씩 짚는다. 여섯 영역은 순서가 아니라 균형의 문제다.</p>
+  <p class="source-line">주요 근거: <a href="https://www.moe.go.kr" target="_blank">교육부 「디지털 기반 교육혁신 방안」·교원 연수 정책</a> · <a href="https://www.unesco.org/en/articles/ai-competency-framework-teachers" target="_blank">UNESCO AI 역량 프레임워크</a> · <a href="https://www.keris.or.kr" target="_blank">KERIS</a> (자료 수집일 2026-07-05)</p>
+
+  <div class="keypoints">
+    <div class="kp-title">이 장에서 다루는 것</div>
+    <ul>
+      <li>수업 수준 프레임(SAMR·TPACK)과 조직 수준 프레임을 구분하고 연결하는 법</li>
+      <li>여섯 영역 각각의 핵심 질문, 한국의 제도 자원, 흔한 실패 유형</li>
+      <li>진입 → 적응 → 선도의 교원 역량 단계와 UNESCO 15역량의 활용</li>
+      <li>도입기 → 확산기 → 정착기로 이어지는 학교 단위 로드맵의 뼈대</li>
+    </ul>
+  </div>
+
+  <h2 id="s1">왜 프레임워크인가 — 열정을 구조로 바꾸는 도구</h2>
+  <p>학교의 AX는 대개 열정적인 교사 한두 명에게서 시작된다. 문제는 그다음이다. 그 교사가 전근을 가면 멈추고, 옆 반으로 번지지 않으며, 관리자가 바뀌면 방향이 뒤집힌다. 개인의 열정을 학교의 구조로 바꾸는 도구가 프레임워크다. 집을 지을 때 설계도가 전기·배관·단열을 빠짐없이 점검하게 해 주듯, 전략 프레임워크는 "우리가 지금 무엇을 놓치고 있는가"를 묻게 해 준다.</p>
+  <p>이때 층위를 구분해야 한다. <strong>수업 수준</strong>에는 이미 검증된 틀이 있다. SAMR은 기술 활용을 대체(Substitution)-증강(Augmentation)-변형(Modification)-재정의(Redefinition)의 4단계로 구분해 "이 도구가 수업을 실제로 바꾸는가, 종이를 화면으로 바꿀 뿐인가"를 묻고, TPACK은 기술 지식·교수 지식·내용 지식의 교집합에서 좋은 수업 설계가 나온다고 본다. 여기에 참여(Engagement)·향상(Enhancement)·확장(Extension)을 묻는 Triple E처럼 학습 목표와의 연결을 더 직접 점검하는 틀도 쓰인다. 그러나 이들은 모두 <strong>한 차시의 수업</strong>을 설계하는 틀이지, 학교라는 조직의 전환을 설계하는 틀은 아니다.</p>
+  <p><strong>조직 수준</strong>에서는 기업 디지털 전환의 절차 — 예컨대 한국생산성본부의 K-DX 방법론이 밟는 기본교육 → 역량 진단 → 경영진 면담 → 동향 분석 → 비전 수립의 5단계 — 가 참고가 되지만, 1장에서 본 공교육의 다섯 가지 특수성 때문에 그대로 이식할 수 없다. 그래서 이 핸드북은 국내 정책 구조와 국제 프레임워크를 학교 맥락으로 재구성한 <strong>6대 영역</strong>을 제안한다.</p>
+  <div class="tbl-wrap">
+  <table>
+    <thead><tr><th>영역</th><th>핵심 질문</th><th>주요 제도 자원(한국)</th></tr></thead>
+    <tbody>
+      <tr><td>① 거버넌스·비전</td><td>누가, 무엇을 위해, 어떤 합의로 추진하는가</td><td>학교 교육과정위원회, 교육청 전환 계획</td></tr>
+      <tr><td>② 인프라·데이터</td><td>쓸 수 있는 환경과 데이터 기반이 있는가</td><td>1인 1기기 정책, 하이러닝 등 플랫폼, 디지털튜터·테크센터</td></tr>
+      <tr><td>③ 교원 역량</td><td>교사가 판단하고 활용할 힘이 있는가</td><td>교실혁명 선도교사, 3단계 역량체계, AI 교육지원센터</td></tr>
+      <tr><td>④ 교육과정·수업</td><td>무엇을 가르치고 수업을 어떻게 바꾸는가</td><td>2022 개정 교육과정, 정보 시수 확대, 학교자율시간</td></tr>
+      <tr><td>⑤ 평가·환류</td><td>공정하게 평가하고 효과를 확인하는가</td><td>수행평가 AI 활용 관리 방안, AI 서·논술형 채점 보조</td></tr>
+      <tr><td>⑥ 윤리·안전</td><td>학생을 보호할 규칙과 습관이 있는가</td><td>교육분야 AI 윤리원칙, 교육청 지침, AI 기본법</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <figure style="margin:26px auto;">
+    <svg viewBox="0 0 720 320" width="100%" height="auto" role="img" aria-labelledby="fig3t fig3d" style="max-width:680px;height:auto;display:block;margin:0 auto;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',sans-serif;">
+      <title id="fig3t">학교 AX를 떠받치는 6대 영역</title>
+      <desc id="fig3d">거버넌스·비전, 인프라·데이터, 교원 역량, 교육과정·수업, 평가·환류, 윤리·안전의 여섯 영역이 학교의 인공지능전환을 함께 떠받친다.</desc>
+      <!-- 상단 띠 -->
+      <rect x="10" y="12" width="700" height="46" rx="10" fill="#fff8f0" stroke="#b45309" stroke-width="2"/>
+      <text x="360" y="41" text-anchor="middle" font-size="16" font-weight="700" fill="#92400e">학교 AX — 여섯 영역이 함께 떠받친다</text>
+      <!-- 6개 영역 박스: 2행 3열 -->
+      <!-- 1행 -->
+      <g>
+        <rect x="15" y="78" width="222" height="104" rx="10" fill="#f6f8fa" stroke="#d0d7de"/>
+        <circle cx="45" cy="112" r="15" fill="#b45309"/>
+        <text x="45" y="117" text-anchor="middle" font-size="14" font-weight="700" fill="#ffffff">1</text>
+        <text x="70" y="117" text-anchor="start" font-size="14.5" font-weight="700" fill="#1f2328">거버넌스·비전</text>
+        <text x="30" y="150" text-anchor="start" font-size="11.5" fill="#636c76">방향과 합의를 세운다</text>
+      </g>
+      <g>
+        <rect x="249" y="78" width="222" height="104" rx="10" fill="#f6f8fa" stroke="#d0d7de"/>
+        <circle cx="279" cy="112" r="15" fill="#1a7f37"/>
+        <text x="279" y="117" text-anchor="middle" font-size="14" font-weight="700" fill="#ffffff">2</text>
+        <text x="304" y="117" text-anchor="start" font-size="14.5" font-weight="700" fill="#1f2328">인프라·데이터</text>
+        <text x="264" y="150" text-anchor="start" font-size="11.5" fill="#636c76">쓸 환경과 데이터 기반</text>
+      </g>
+      <g>
+        <rect x="483" y="78" width="222" height="104" rx="10" fill="#f6f8fa" stroke="#d0d7de"/>
+        <circle cx="513" cy="112" r="15" fill="#6639ba"/>
+        <text x="513" y="117" text-anchor="middle" font-size="14" font-weight="700" fill="#ffffff">3</text>
+        <text x="538" y="117" text-anchor="start" font-size="14.5" font-weight="700" fill="#1f2328">교원 역량</text>
+        <text x="498" y="150" text-anchor="start" font-size="11.5" fill="#636c76">판단하고 활용할 힘</text>
+      </g>
+      <!-- 2행 -->
+      <g>
+        <rect x="15" y="196" width="222" height="104" rx="10" fill="#f6f8fa" stroke="#d0d7de"/>
+        <circle cx="45" cy="230" r="15" fill="#953800"/>
+        <text x="45" y="235" text-anchor="middle" font-size="14" font-weight="700" fill="#ffffff">4</text>
+        <text x="70" y="235" text-anchor="start" font-size="14.5" font-weight="700" fill="#1f2328">교육과정·수업</text>
+        <text x="30" y="268" text-anchor="start" font-size="11.5" fill="#636c76">무엇을 가르치고 어떻게</text>
+      </g>
+      <g>
+        <rect x="249" y="196" width="222" height="104" rx="10" fill="#f6f8fa" stroke="#d0d7de"/>
+        <circle cx="279" cy="230" r="15" fill="#92400e"/>
+        <text x="279" y="235" text-anchor="middle" font-size="14" font-weight="700" fill="#ffffff">5</text>
+        <text x="304" y="235" text-anchor="start" font-size="14.5" font-weight="700" fill="#1f2328">평가·환류</text>
+        <text x="264" y="268" text-anchor="start" font-size="11.5" fill="#636c76">공정한 평가와 효과 확인</text>
+      </g>
+      <g>
+        <rect x="483" y="196" width="222" height="104" rx="10" fill="#f6f8fa" stroke="#d0d7de"/>
+        <circle cx="513" cy="230" r="15" fill="#cf222e"/>
+        <text x="513" y="235" text-anchor="middle" font-size="14" font-weight="700" fill="#ffffff">6</text>
+        <text x="538" y="235" text-anchor="start" font-size="14.5" font-weight="700" fill="#1f2328">윤리·안전</text>
+        <text x="498" y="268" text-anchor="start" font-size="11.5" fill="#636c76">학생을 지키는 규칙</text>
+      </g>
+    </svg>
+    <figcaption style="text-align:center;font-size:13px;color:#636c76;margin-top:8px;">그림 2. 학교 AX를 떠받치는 6대 영역 — 순서가 아니라 균형의 문제다</figcaption>
+  </figure>
+
+  <h2 id="s2">영역 ① 거버넌스·비전 — 방향 없는 도입은 표류한다</h2>
+  <p>거버넌스는 위원회를 만드는 일이 아니라 <strong>세 가지 질문에 학교 공동체가 같은 답을 갖게 만드는 일</strong>이다. 왜 하는가(우리 학교 학생에게 어떤 변화가 필요한가), 무엇부터 하는가(수업인가 행정인가, 어느 교과부터인가), 어디까지 하는가(허용과 금지의 경계). 이 합의 없이 도구부터 사면 2장에서 본 활용률 8.1%의 축소판이 학교 안에서 재현된다.</p>
+  <p>실무적으로는 관리자 혼자도, 열정 교사 혼자도 아닌 <strong>소규모 추진팀</strong>(관리자 1 + 부장·담당 교사 2~3 + 희망 교사)이 출발점이 된다. 추진팀의 첫 산출물은 거창한 계획서가 아니라 현황 진단이어야 한다 — 우리 학교 교사 중 생성형 AI를 써 본 사람은 몇 명인가, 기기와 무선망은 어떤 상태인가, 학부모의 우려는 무엇인가. 진단 위에서 한 학기짜리 작은 목표를 세우고, 그 결과를 공개적으로 공유하는 것이 신뢰 자본을 쌓는 가장 빠른 길이다. 학부모 설명회를 도입 '후'가 아니라 '전'에 여는 것도 같은 이유에서다.</p>
+  <div class="note">거버넌스의 성패는 문서의 두께가 아니라 "반대하는 사람의 질문에 학교가 준비된 답을 갖고 있는가"로 판별된다.</div>
+
+  <h2 id="s3">영역 ② 인프라·데이터 — 보이지 않는 기반이 전부를 결정한다</h2>
+  <p>인프라는 화려하지 않지만, 무너지면 모든 것이 무너진다. 수업 중 서른 명이 동시에 접속했을 때 무선망이 버티는가, 기기는 관리(분실·파손·유해 앱 차단)되는가, 문제가 생겼을 때 교사가 아닌 누군가가 고쳐 주는가. 서울의 디벗이 기기 보급과 함께 기기관리시스템(MDM)과 A/S 체계를 설계한 것, 디지털 선도학교가 무선망 고도화와 함께 지원된 것은 이 기반의 중요성을 보여 준다. 교육지원청의 테크센터와 학교의 디지털튜터로 이어지는 기술 지원 체계는 "교사가 기술 문제로 수업을 멈추지 않게 한다"는 원칙의 제도화다.</p>
+  <p>AX 단계에서는 여기에 <strong>데이터</strong>라는 층이 얹힌다. AI 코스웨어(학생 진단 결과에 맞춰 문항과 콘텐츠를 골라 제공하는 학습용 소프트웨어)와 학습 플랫폼은 학생의 학습 이력·오답 유형·진도율 같은 데이터를 수집하고, 이 데이터가 맞춤형 학습의 원료가 된다. 그래서 인프라 영역의 점검 질문에는 반드시 데이터 항목이 들어가야 한다 — 이 도구는 학생의 어떤 데이터를 수집하는가, 어디에 저장되고 언제 파기되는가, 계약이 끝나면 데이터는 어떻게 되는가. 도구 선정 단계에서 이 질문을 던지지 않으면, 나중에 답할 수 없는 상황에서 학부모의 질문을 받게 된다(구체적 점검 목록은 5장).</p>
+
+  <h2 id="s4">영역 ③ 교원 역량 — 병목이자 지렛대</h2>
+  <p>2장에서 확인한 국제 공통 신호를 다시 불러오자. 병목은 기술이 아니라 교사 역량이다. 뒤집으면, 가장 확실한 지렛대도 교사 역량이다.</p>
+  <p>한국의 교원 역량 체계는 <strong>진입 → 적응 → 선도</strong>의 3단계로 설계되어 있다. 개념은 이해했지만 실천이 어려운 진입 단계, 표준적인 수업에 적용할 수 있는 적응 단계, 심화 적용과 동료 코칭이 가능한 선도 단계다. 이 구분이 실무에서 중요한 이유는 <strong>연수를 한 종류로 만들지 않게 해 주기 때문</strong>이다. 전 교원에게 같은 연수를 트는 학교는 진입 단계 교사에게는 어렵고 선도 단계 교사에게는 지루한 시간을 만든다. 단계를 진단하고, 진입 단계에는 체험 중심 기본 과정을, 적응 단계에는 교과별 수업 설계 과정을, 선도 단계에는 코칭과 연구 역할을 주는 것이 옳은 배치다. 교육부의 연수 체계가 기본 → 집중 → 공유의 3단계로 개편되고, UNESCO 교사용 프레임워크와 OECD 기준을 참조한 '교원 AI·디지털 교육 역량체계'가 마련된 것도 같은 논리다.</p>
+  <p>학교 밖 자원도 촘촘해졌다. 하이터치 하이테크 수업을 이끄는 T.O.U.C.H. 교사단, 2024년부터 양성되어 전국 초·중등에서 1만여 명 규모에 이른 교실혁명 선도교사(동료 코칭을 마치면 인증이 부여되고, 학교당 2~3명 배치가 목표로 제시되었다), 그리고 2026년부터 교육청에 설치되기 시작한 AI 교육지원센터다. 학교 안에서는 <strong>교사학습공동체</strong>가 가장 검증된 그릇이다 — 외부 강사의 특강 열 번보다, 동료가 자기 수업에서 실제로 해 본 것을 나누는 월 1회 모임이 행동을 바꾼다.</p>
+  <p>역량의 내용 면에서는 UNESCO 교사용 프레임워크의 5개 차원 — 인간 중심 사고방식, AI 윤리, AI 기초와 응용, AI 교수법, 전문성 성장을 위한 AI — 이 좋은 점검표가 된다. 눈여겨볼 것은 다섯 중 둘(인간 중심, 윤리)이 기술이 아닌 관점의 문제라는 사실이다. 도구 사용법은 배우기 쉽다. 어려운 것은 "이 도구를 이 수업에서 쓰는 것이 교육적으로 옳은가"를 판단하는 힘이고, 연수는 바로 그 힘을 길러야 한다.</p>
+
+  <div class="pullquote">도구 사용법은 한나절이면 배운다. 길러야 할 것은 "이 수업에서 이 도구가 배움을 만드는가"를 판단하는 눈이다.</div>
+
+  <h2 id="s5">영역 ④ 교육과정·수업 — 두 개의 과제</h2>
+  <p>교육과정 영역의 과제는 둘로 나뉜다. 하나는 <strong>AI에 대해 가르치는 것</strong>(AI 리터러시), 다른 하나는 <strong>AI로 가르치는 것</strong>(수업 혁신)이다.</p>
+  <h3>AI에 대해 가르치기</h3>
+  <p>2022 개정 교육과정은 이 과제의 그릇을 넓혀 놓았다. 정보 수업 시수가 초등 34시간 이상, 중학교 68시간 이상으로 두 배가 되었고, 디지털 기초소양이 모든 교과를 관통하는 소양으로 자리 잡았으며, 고등학교에는 '인공지능 기초' 같은 선택 과목이 생겼다. 여기에 <strong>학교자율시간</strong>은 학교가 자체 과목을 설계할 수 있는 여지를 준다 — AI 리터러시를 학교 특색 과목으로 편성하는 경로다. 내용의 기준으로는 UNESCO 학생용 프레임워크의 4개 차원(인간 중심 사고방식, AI 윤리, AI 기법과 응용, AI 시스템 설계)이 참조점이 된다. 중요한 것은 균형이다. 프롬프트 작성법 같은 활용 기술만 가르치면 반쪽이고, AI가 왜 틀리는지·어떤 데이터를 먹고 자라는지·누구에게 불리할 수 있는지를 함께 다루어야 온전한 리터러시다.</p>
+  <h3>AI로 가르치기</h3>
+  <p>수업 혁신 쪽의 함정은 '보여 주기용 수업'이다. SAMR의 언어로 말하면, 종이 학습지를 화면 학습지로 바꾼 대체 단계에 머물면서 전환이 일어났다고 착각하는 것이다. 판별 질문은 단순하다 — <strong>이 도구 덕분에 이전에는 불가능했던 배움이 일어났는가?</strong> 학생 서른 명이 각자 다른 지점에서 막히는 수학 시간에 AI 코스웨어가 각자의 오답 유형에 맞는 연습을 제공하고 교사는 가장 도움이 필요한 학생에게 가는 장면, 모든 학생이 자기 글에 대한 1차 피드백을 받고 교사는 그 위에 고차원의 피드백을 얹는 장면 — 이런 장면이 재정의에 가까운 변화다. 구체적인 수업 유형과 절차는 4장에서 실습 시나리오로 다룬다.</p>
+
+  <h2 id="s6">영역 ⑤ 평가·환류 — 신뢰가 걸린 영역</h2>
+  <p>평가는 학부모와 사회가 가장 민감하게 지켜보는 영역이고, 그래서 규범이 가장 먼저 정비된 영역이기도 하다. 교육부와 교육청이 마련한 수행평가 AI 활용 관리 방안은 다섯 요소로 구성된다 — AI 활용 범위 설정, 활용 과정의 표기 지도, 학생 유의사항 사전 교육, 평가 설계 방향, 개인정보 보호. 기본 방향은 일률적 금지가 아니라 <strong>경계가 분명한 허용</strong>이다. 어떤 과제에서 어디까지 AI를 써도 되는지 교사가 미리 정해 공지하고, 학생은 사용한 내용을 표기하며, 평가는 AI가 대신할 수 없는 것(수업 중 실시간 활동, 과정 관찰, 구술)의 비중을 키우는 방식으로 설계한다.</p>
+  <p>채점 보조는 이미 현실이 되었다. 경기 하이러닝의 AI 서·논술형 평가 시스템은 채점 시간을 크게 줄이면서 교사 채점과 높은 일치도를 보였다고 보고되었다(2장). 단, 원칙이 하나 있다 — AI의 채점은 초안이고, 확정은 교사가 한다. 이 human-in-the-loop 원칙은 AI 기본법이 교육을 고영향 분야로 지정한 취지와도 맞닿는다.</p>
+  <p>환류(피드백 루프)는 이 영역의 잊히기 쉬운 절반이다. 도입한 도구가 효과가 있는지 학교 스스로 확인해야 다음 결정을 할 수 있다. 거창한 연구가 아니어도 된다 — 사용 전후의 학습 참여 관찰, 학생·교사 만족도 조사, 기초학력 지표의 변화 같은 소박한 증거를 학기 단위로 모으는 것이다. 참고로 공교육 AI 코스웨어의 효과 연구는 아직 초기 단계다. 초등 수학 시스템 '똑똑! 수학탐험대'를 14주 적용해 학업성취도와 수학적 태도가 유의미하게 향상되었다는 연구처럼 긍정적 근거가 나오고 있지만, "AI를 쓰면 성적이 오른다"고 일반화할 단계는 아니다. 그래서 더욱, 각 학교의 자체 확인이 중요하다.</p>
+
+  <h2 id="s7">영역 ⑥ 윤리·안전 — 나중이 아니라 처음부터</h2>
+  <p>여섯 번째 영역을 마지막에 두었지만, 시간 순서로는 첫 번째다. 윤리·안전은 문제가 터진 뒤에 세우는 사후 대책이 아니라 도구 선정·수업 설계·평가 규칙에 처음부터 심어 두는 설계 조건이기 때문이다. 교육분야 AI 윤리원칙(2022)이 제시한 대원칙 — <strong>"사람의 성장을 지원하는 인공지능"</strong> — 은 여섯 영역 전체를 관통하는 기준이며, 학생 개인정보 보호, 연령별 사용 규칙, 생성형 AI의 위험(환각·표절·과의존), 딥페이크 대응까지의 구체적인 내용은 분량과 무게를 고려해 5장 전체에서 다룬다. 여기서는 한 문장만 새겨 두자. <strong>윤리 영역이 비어 있는 AX 전략은 가장 빠른 길이 아니라 가장 위험한 길이다.</strong></p>
+
+  <h2 id="s8">단계별 로드맵 — 도입기, 확산기, 정착기</h2>
+  <p>여섯 영역을 한꺼번에 완성할 수는 없다. 학교 현장에서 검증된 순서는 대체로 세 단계로 요약된다.</p>
+  <div class="tbl-wrap">
+  <table>
+    <thead><tr><th>단계</th><th>기간(예시)</th><th>중심 활동</th><th>성공 신호</th></tr></thead>
+    <tbody>
+      <tr><td>도입기</td><td>~6개월</td><td>추진팀 구성, 현황 진단, 윤리·사용 규칙 합의, 희망 교사 중심 시범 수업, 학부모 설명</td><td>시범 교사들이 "다음 학기에도 하겠다"고 말한다</td></tr>
+      <tr><td>확산기</td><td>6~18개월</td><td>교사학습공동체 운영, 교과별 적용 확대, 행정 업무 적용, 단계별 연수 배치, 중간 점검과 규칙 보완</td><td>시범에 참여하지 않았던 교사가 자발적으로 시작한다</td></tr>
+      <tr><td>정착기</td><td>18개월~</td><td>학교 교육과정 반영(학교자율시간 등), 평가 규칙 정례화, 효과 데이터 축적, 신규 교사 온보딩 체계</td><td>담당자가 바뀌어도 체계가 굴러간다</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p>각 단계에서 여섯 영역의 비중은 달라진다. 도입기에는 거버넌스와 윤리가, 확산기에는 교원 역량과 수업이, 정착기에는 평가·환류와 교육과정이 무게중심이 된다. 그러나 어느 단계에서도 어떤 영역이 완전히 비어서는 안 된다 — 프레임워크의 존재 이유가 바로 그 공백의 감지다. 이 로드맵을 학교의 구체적인 실행 절차로 옮기는 방법은 4장의 고급 시나리오에서 단계별로 다룬다.</p>
+
+  <h3>교육청·정책 담당자의 몫</h3>
+  <p>지금까지의 실행 지침은 주로 단위학교의 관점이었다. 그러나 학교가 제대로 움직이려면 교육청과 정책 담당자가 받쳐야 할 몫이 따로 있다. 앞의 여섯 영역을 교육청 관점으로 다시 배열하면 네 가지 과제로 압축된다. 첫째, <strong>선도학교 선정과 그 기준의 설계</strong> — 안전성·효과성을 담보할 요건을 만들어 학교의 실험에 명분과 안전망을 준다. 둘째, <strong>인프라와 인력의 배치</strong> — 테크센터·디지털튜터를 지역 여건에 맞게 배분해 개별 학교가 기술 문제를 홀로 떠안지 않게 한다. 셋째, <strong>단계별 연수의 공급</strong> — 진입·적응·선도 단계에 맞는 과정을 지역 단위로 마련한다. 넷째, <strong>도구 데이터 처리의 표준화</strong> — 개별 교사·학교가 매번 계약을 검토하지 않도록 데이터 처리·보안 기준을 교육청 차원에서 정비한다. 학교의 전환은 교육청의 이 네 가지 뒷받침 위에서만 지속된다.</p>
+
+  <div class="chapter-nav">
+    <a href="../policy/Policy_Trends_Chapter.html" class="prev"><div class="dir">← 이전 장</div><div class="ttl">2장 국내외 정책·동향</div></a>
+    <a href="../practice/Practice_Manual.html" class="next"><div class="dir">다음 장 →</div><div class="ttl">4장 학교 현장 적용</div></a>
+  </div>
+ </article>
+</main>
+
+</div>
+  <script src="../assets/inpage-search.js" defer></script>
+</body>
+</html>

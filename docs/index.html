@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>공교육 특화 AX 전략 핸드북</title>
+  <style>
+    :root {
+      --bg: #ffffff;
+      --bg2: #f6f8fa;
+      --bg3: #eef1f4;
+      --border: #d0d7de;
+      --text: #1f2328;
+      --text-dim: #636c76;
+      --accent: #b45309;
+      --accent2: #1a7f37;
+      --accent4: #6639ba;
+      --accent6: #92400e;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans KR', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 15px;
+      -webkit-font-smoothing: antialiased;
+    }
+    .wrap {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 64px 24px 80px;
+    }
+    header { margin-bottom: 8px; }
+    h1 {
+      font-size: 2.1rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      margin-bottom: 10px;
+    }
+    .subtitle {
+      color: var(--text-dim);
+      font-size: 15px;
+      margin-bottom: 8px;
+    }
+    .subtitle a { color: var(--accent); text-decoration: none; }
+    .subtitle a:hover { text-decoration: underline; }
+
+    .meta {
+      background: #fff8f0;
+      border: 1px solid #f3d3a8;
+      border-left: 4px solid var(--accent);
+      border-radius: 6px;
+      padding: 12px 18px;
+      margin: 28px 0 40px;
+      font-size: 13px;
+      color: var(--text-dim);
+    }
+    .meta strong { color: var(--accent6); }
+
+    .section-label {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--text-dim);
+      margin: 0 0 14px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+    .card {
+      display: block;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 22px 24px;
+      text-decoration: none;
+      color: var(--text);
+      transition: border-color .15s, box-shadow .15s, transform .15s;
+    }
+    .card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 4px 14px rgba(180,83,9,.10);
+      transform: translateY(-2px);
+    }
+    .card.wide { grid-column: 1 / -1; }
+    .card .tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 9px;
+      border-radius: 20px;
+      letter-spacing: .04em;
+      margin-bottom: 12px;
+    }
+    .tag-ch  { background: #fbe6cf; color: var(--accent6); border: 1px solid #f3d3a8; }
+    .tag-ex  { background: #dafbe1; color: var(--accent2); border: 1px solid #a2d9b1; }
+    .tag-qz  { background: #fbefff; color: var(--accent4); border: 1px solid #d2b9ff; }
+    .card h2 {
+      font-size: 1.06rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .card p {
+      font-size: 13px;
+      color: var(--text-dim);
+      line-height: 1.6;
+    }
+    .card .go {
+      margin-top: 14px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    .group { margin-bottom: 40px; }
+
+    footer {
+      margin-top: 48px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+      color: var(--text-dim);
+      font-size: 12px;
+      line-height: 1.9;
+    }
+    footer a { color: var(--accent); text-decoration: none; }
+
+    @media (max-width: 640px) {
+      .wrap { padding: 40px 18px 60px; }
+      h1 { font-size: 1.7rem; }
+      .grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>공교육 특화 AX 전략 핸드북</h1>
+      <p class="subtitle">공교육의 인공지능전환(AX)을 왜, 무엇을, 어떻게 추진할지 — 정책·전략·현장·윤리를 하나로 엮은 교사·관리자·정책 담당자용 안내서</p>
+    </header>
+
+    <div class="meta">
+      대상 <strong>한국 초·중·고 공교육 · 2026년 상반기 정책 기준</strong> &nbsp;|&nbsp;
+      주요 출처: <a href="https://www.moe.go.kr" target="_blank">교육부</a> · <a href="https://www.unesco.org/en/digital-education/artificial-intelligence" target="_blank">UNESCO</a> · <a href="https://www.oecd.org/en/publications/oecd-digital-education-outlook-2026_062a7394-en.html" target="_blank">OECD</a>
+      &nbsp;|&nbsp; 서술형 <strong>챕터</strong>와 현장 <strong>실습</strong>, 자가 점검 <strong>문항</strong>으로 구성됩니다.
+      <br>최종 업데이트 <strong>2026년 7월 5일</strong>
+    </div>
+
+    <!-- 섹션 1: 이론 -->
+    <div class="group">
+      <p class="section-label">① 개념과 정책 — 왜, 무엇을</p>
+      <div class="grid">
+        <a class="card" href="overview/AX_Overview_Chapter.html">
+          <span class="tag tag-ch">1장 · 챕터</span>
+          <h2>AX 개관과 공교육의 특수성</h2>
+          <p>전산화·DX·AX의 차이, 지금이라는 시점, 그리고 공교육이 기업과 다른 다섯 가지 조건.</p>
+          <div class="go">읽기 →</div>
+        </a>
+        <a class="card" href="policy/Policy_Trends_Chapter.html">
+          <span class="tag tag-ch">2장 · 챕터</span>
+          <h2>국내외 정책·동향</h2>
+          <p>한국 정책의 골격과 AI 디지털교과서의 부침, UNESCO·OECD와 주요 7개국의 전략 유형.</p>
+          <div class="go">읽기 →</div>
+        </a>
+      </div>
+    </div>
+
+    <!-- 섹션 2: 전략 -->
+    <div class="group">
+      <p class="section-label">② 전략 설계 — 어떻게(틀)</p>
+      <div class="grid">
+        <a class="card wide" href="framework/Strategy_Framework_Chapter.html">
+          <span class="tag tag-ch">3장 · 챕터</span>
+          <h2>6대 영역 전략 프레임워크</h2>
+          <p>거버넌스·인프라·교원 역량·교육과정·평가·윤리의 여섯 영역과 도입기–확산기–정착기 로드맵. 이 핸드북의 중심 장으로, 학교·교육청이 AX를 설계할 때 빠뜨리기 쉬운 것을 점검하게 해 줍니다.</p>
+          <div class="go">읽기 →</div>
+        </a>
+      </div>
+    </div>
+
+    <!-- 섹션 3: 현장 -->
+    <div class="group">
+      <p class="section-label">③ 현장 적용 — 어떻게(실행)</p>
+      <div class="grid">
+        <a class="card" href="practice/Practice_Manual.html">
+          <span class="tag tag-ch">4장 · 매뉴얼</span>
+          <h2>학교 현장 적용 매뉴얼</h2>
+          <p>수업·행정 활용 유형, 주요 도구 레퍼런스, 제도적 지원 체계, 프롬프트 작성 기본기.</p>
+          <div class="go">매뉴얼 열기 →</div>
+        </a>
+        <a class="card" href="practice/Practice_Examples.html">
+          <span class="tag tag-ex">4장 · 실습</span>
+          <h2>현장 적용 실습 예시</h2>
+          <p>초·중·고급 6개 시나리오 — 지도안 초안부터 글쓰기 피드백 워크플로, 학교 단위 로드맵까지.</p>
+          <div class="go">예시 열기 →</div>
+        </a>
+      </div>
+    </div>
+
+    <!-- 섹션 4: 윤리·점검 -->
+    <div class="group">
+      <p class="section-label">④ 안전과 점검 — 무엇을 지키나</p>
+      <div class="grid">
+        <a class="card" href="ethics/Ethics_Safety_Chapter.html">
+          <span class="tag tag-ch">5장 · 챕터</span>
+          <h2>윤리·안전·개인정보</h2>
+          <p>교육분야 AI 윤리원칙, 생성형 AI의 위험, 개인정보·연령 규칙, 도구 도입 체크리스트.</p>
+          <div class="go">읽기 →</div>
+        </a>
+        <a class="card" href="quiz/Assessment_Quiz.html">
+          <span class="tag tag-qz">6장 · 문제 풀이</span>
+          <h2>점검 문항 / Q&amp;A</h2>
+          <p>객관식·단답·서술형·개념 Q&amp;A로 1~5장을 점검. 연수와 자가 학습에 활용하세요.</p>
+          <div class="go">문항 열기 →</div>
+        </a>
+      </div>
+    </div>
+
+    <footer>
+      한국 초·중·고 공교육 · 2026년 상반기 정책 기준 · 자료 수집일 2026년 7월 5일<br>
+      주요 출처: <a href="https://www.moe.go.kr" target="_blank">교육부</a> · <a href="https://www.keris.or.kr" target="_blank">KERIS</a> · <a href="https://www.unesco.org/en/digital-education/artificial-intelligence" target="_blank">UNESCO</a> · <a href="https://www.oecd.org" target="_blank">OECD</a><br>
+      정책은 계속 변화하므로 각 장의 출처에서 최신 상태를 확인하시기 바랍니다.
+    </footer>
+  </div>
+  <script src="assets/site-search.js" defer></script>
+</body>
+</html>
