@@ -14,7 +14,8 @@
     { path: 'practice/Practice_Manual.html',            title: '4장 현장 적용 매뉴얼' },
     { path: 'practice/Practice_Examples.html',          title: '4장 현장 적용 실습 예시' },
     { path: 'ethics/Ethics_Safety_Chapter.html',        title: '5장 윤리·안전·개인정보' },
-    { path: 'quiz/Assessment_Quiz.html',                title: '6장 점검 문항 / Q&A' }
+    { path: 'quiz/Assessment_Quiz.html',                title: '6장 점검 문항 / Q&A' },
+    { path: 'agents/Agentic_AI_Chapter.html',           title: '7장 생성형을 넘어 에이전트로' }
   ];
   function ready(fn){ if (document.readyState !== 'loading') fn(); else document.addEventListener('DOMContentLoaded', fn); }
   function strip(s){ return (s || '').replace(/\s+/g, ' ').trim(); }
