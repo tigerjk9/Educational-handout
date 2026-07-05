@@ -19,6 +19,3 @@
 - 주요 출처: 교육부, KERIS, 개인정보보호위원회, AI 기본법, UNESCO, OECD 등
 
 정책은 계속 변화하므로 각 장에 표시된 출처에서 최신 상태를 확인하며 읽기를 권합니다.
-
----
-Built with the Teach Me skill for Claude Code.
