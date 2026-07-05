@@ -13,7 +13,7 @@
 [![문항으로 점검](https://img.shields.io/badge/📝_자가_점검-11문항-92400e?style=for-the-badge)](https://tigerjk9.github.io/Educational-handout/quiz/Assessment_Quiz.html)
 
 ![업데이트](https://img.shields.io/badge/updated-2026--07--05-f3d3a8?style=flat-square)
-![구성](https://img.shields.io/badge/chapters-6-fbe6cf?style=flat-square)
+![구성](https://img.shields.io/badge/chapters-7-fbe6cf?style=flat-square)
 ![대상](https://img.shields.io/badge/scope-K--12_·_Korea-eef1f4?style=flat-square)
 ![언어](https://img.shields.io/badge/lang-한국어-eef1f4?style=flat-square)
 ![검증](https://img.shields.io/badge/검증-5관점_멀티에이전트-dafbe1?style=flat-square)
@@ -22,7 +22,7 @@
 
 ---
 
-> **한 줄 요약** — AX는 태블릿을 나눠 주는 일이 아니라, 수업과 의사결정이 바뀌는 일이다. 이 핸드북은 그 전환을 **작게 시작해 검증하며 넓히는** 방법을 6개 장에 담았다.
+> **한 줄 요약** — AX는 태블릿을 나눠 주는 일이 아니라, 수업과 의사결정이 바뀌는 일이다. 이 핸드북은 그 전환을 **작게 시작해 검증하며 넓히는** 방법을 7개 장에 담았다 — 마지막 장은 AI가 '일을 대신 수행하는' 에이전트 단계까지 내다본다.
 
 <br>
 
@@ -36,6 +36,7 @@
 | **4** | [학교 현장 적용](https://tigerjk9.github.io/Educational-handout/practice/Practice_Manual.html) | 🧪 매뉴얼+실습 | 수업·행정 활용 + 초·중·고급 6개 시나리오 |
 | **5** | [윤리·안전·개인정보](https://tigerjk9.github.io/Educational-handout/ethics/Ethics_Safety_Chapter.html) | 📖 챕터 | AI 윤리원칙, 위험, 연령 규칙, 도입 체크리스트 |
 | **6** | [점검 문항 / Q&A](https://tigerjk9.github.io/Educational-handout/quiz/Assessment_Quiz.html) | ✅ 문제 풀이 | 객관식·단답·서술형·개념 Q&A 11문항 |
+| **7** | [생성형을 넘어 에이전트로](https://tigerjk9.github.io/Educational-handout/agents/Agentic_AI_Chapter.html) | 🔭 전망 | 생성형↔에이전트, in/on the loop, 교사향 에이전트 실습 |
 
 <br>
 
@@ -44,6 +45,7 @@
 - **"우리 학교, 뭐부터 하지?"** → 4장 초급 시나리오(잘 아는 단원 지도안 초안부터)
 - **"전환 계획을 세워야 한다"** → 3장 6대 영역 + 도입기·확산기·정착기 로드맵
 - **"예산을 어디에 써야 하나"** → 6장 서술형 Q9(2천만 원 배분 문제, 채점 기준 포함)
+- **"에이전트(Claude Cowork 등)는 어떻게 준비하나"** → 7장 생성형→에이전트 전환과 교사향 실습
 - **"AI 써도 되나, 개인정보는?"** → 5장 연령 규칙 + 도구 도입 체크리스트
 
 <br>
