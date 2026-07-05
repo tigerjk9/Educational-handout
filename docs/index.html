@@ -7,18 +7,16 @@
   <style>
     :root {
       --paper:#ffffff;
-      --wash:#fbf3e8;          /* 따뜻한 오프화이트 */
+      --wash:#fbf3e8;
       --wash2:#f6ecdd;
-      --ink:#241c15;           /* 따뜻한 near-black */
-      --muted:#7b6d5d;         /* 따뜻한 회색 */
+      --ink:#241c15;
+      --muted:#7b6d5d;
       --muted2:#9a8b78;
       --line:#ece0cf;
       --line2:#e2d4bf;
       --amber:#b45309;
       --amber-d:#92400e;
       --amber-deep:#7c3a08;
-      --green:#1a7f37;
-      --violet:#6639ba;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
@@ -28,6 +26,7 @@
       color: var(--ink);
       line-height: 1.7;
       font-size: 16px;
+      word-break: keep-all;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
     }
@@ -36,8 +35,7 @@
 
     /* ─────────── HERO ─────────── */
     .hero {
-      background:
-        radial-gradient(120% 140% at 100% 0%, var(--wash2) 0%, var(--wash) 42%, var(--paper) 100%);
+      background: radial-gradient(120% 140% at 100% 0%, var(--wash2) 0%, var(--wash) 42%, var(--paper) 100%);
       border-bottom: 1px solid var(--line);
     }
     .hero-inner { max-width: 940px; margin: 0 auto; padding: 66px 24px 52px; }
@@ -48,26 +46,23 @@
       padding: 5px 12px; border-radius: 100px; margin-bottom: 22px;
     }
     h1.title {
-      font-size: clamp(2rem, 5.4vw, 3.15rem);
-      font-weight: 800; letter-spacing: -0.025em; line-height: 1.12;
-      max-width: 16ch; margin-bottom: 20px;
+      font-size: clamp(2rem, 5.2vw, 3.05rem);
+      font-weight: 800; letter-spacing: -0.025em; line-height: 1.18;
+      max-width: 20ch; margin-bottom: 20px; word-break: keep-all;
     }
     h1.title b { color: var(--amber); font-weight: 800; }
     .lead {
-      font-size: clamp(1rem, 2vw, 1.18rem); color: #4a3f33; max-width: 44ch;
-      line-height: 1.6; margin-bottom: 30px;
+      font-size: clamp(1rem, 2vw, 1.16rem); color: #4a3f33; max-width: 46ch;
+      line-height: 1.62; margin-bottom: 30px;
     }
-    .flow { color: var(--amber-d); font-weight: 700; white-space: nowrap; }
+    .flow { color: var(--amber-d); font-weight: 700; }
     .cta-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-bottom: 26px; }
     .btn {
       display: inline-flex; align-items: center; gap: 8px;
       font-size: 15px; font-weight: 700; padding: 12px 22px; border-radius: 100px;
-      transition: transform .16s ease, box-shadow .16s ease, background .16s ease;
+      transition: transform .16s ease, box-shadow .16s ease, background .16s ease, border-color .16s ease;
     }
-    .btn-primary {
-      background: var(--amber); color: #fff;
-      box-shadow: 0 6px 18px -6px rgba(180,83,9,.55);
-    }
+    .btn-primary { background: var(--amber); color: #fff; box-shadow: 0 6px 18px -6px rgba(180,83,9,.55); }
     .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 24px -8px rgba(180,83,9,.6); background: var(--amber-d); }
     .btn-ghost { color: var(--amber-d); border: 1px solid var(--line2); background: rgba(255,255,255,.5); }
     .btn-ghost:hover { border-color: var(--amber); background: #fff; }
@@ -75,18 +70,18 @@
     .hero-meta a { color: var(--amber-d); font-weight: 600; }
     .hero-meta a:hover { text-decoration: underline; }
 
-    /* ─────────── 빠른 진입 ─────────── */
+    /* ─────────── 섹션 공통 ─────────── */
     section { padding: 54px 0; }
     .sec-label {
       font-size: 12px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase;
-      color: var(--muted2); margin-bottom: 18px;
-      display: flex; align-items: center; gap: 10px;
+      color: var(--muted2); margin-bottom: 20px; display: flex; align-items: center; gap: 12px;
     }
     .sec-label::after { content: ""; flex: 1; height: 1px; background: var(--line); }
 
+    /* ─────────── 빠른 진입 ─────────── */
     .quick { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
     .quick a {
-      display: flex; align-items: baseline; gap: 12px;
+      display: flex; align-items: center; gap: 12px;
       padding: 14px 18px; border: 1px solid var(--line); border-radius: 12px;
       background: #fff; transition: border-color .15s, background .15s, transform .15s;
     }
@@ -96,41 +91,37 @@
 
     /* ─────────── 여정 (7장 지도) ─────────── */
     .phase { margin-bottom: 30px; }
-    .phase-head { display: flex; align-items: baseline; gap: 12px; margin: 0 0 6px 2px; }
-    .phase-no {
-      font-size: 12px; font-weight: 800; letter-spacing: .1em; color: #fff;
-      background: var(--amber); border-radius: 6px; padding: 3px 8px;
-    }
+    .phase-head { display: flex; align-items: baseline; flex-wrap: wrap; gap: 12px; margin: 0 0 8px 2px; }
+    .phase-no { font-size: 12px; font-weight: 800; letter-spacing: .1em; color: #fff; background: var(--amber); border-radius: 6px; padding: 3px 8px; }
     .phase-name { font-size: 16px; font-weight: 800; color: var(--ink); }
     .phase-sub { font-size: 13px; color: var(--muted); }
 
-    .track { border-left: 2px solid var(--line2); margin-left: 12px; padding-left: 0; }
+    .track { border-left: 2px solid var(--line2); margin-left: 12px; }
     .chap {
-      display: grid; grid-template-columns: 62px 1fr auto; align-items: center;
-      gap: 4px 6px; padding: 16px 16px 16px 20px; position: relative;
-      border-bottom: 1px solid var(--line);
-      transition: background .15s;
+      display: flex; align-items: center; gap: 18px;
+      padding: 16px 14px 16px 24px; position: relative;
+      border-bottom: 1px solid var(--line); transition: background .15s;
     }
     .chap:hover { background: var(--wash); }
     .chap:hover .chap-no { color: var(--amber); }
     .chap:hover .go { transform: translateX(3px); color: var(--amber); }
     .chap::before {
       content: ""; position: absolute; left: -7px; top: 50%; transform: translateY(-50%);
-      width: 12px; height: 12px; border-radius: 50%; background: #fff; border: 2px solid var(--line2);
+      width: 12px; height: 12px; border-radius: 50%; background: #fff; border: 2px solid var(--line2); transition: border-color .15s;
     }
     .chap:hover::before { border-color: var(--amber); }
     .chap-no {
-      grid-row: 1 / 3; font-size: 2rem; font-weight: 800; color: var(--muted2);
-      font-variant-numeric: tabular-nums; letter-spacing: -.02em; transition: color .15s; line-height: 1;
+      font-size: 2rem; font-weight: 800; color: var(--muted2); font-variant-numeric: tabular-nums;
+      letter-spacing: -.02em; line-height: 1; flex-shrink: 0; width: 44px; text-align: center; transition: color .15s;
     }
-    .chap-title { font-size: 1.08rem; font-weight: 700; color: var(--ink); }
+    .chap-main { flex: 1; min-width: 0; }
+    .chap-title { font-size: 1.1rem; font-weight: 700; color: var(--ink); }
     .chap-title .kind {
       font-size: 11px; font-weight: 700; color: var(--amber-d); background: var(--wash2);
-      border: 1px solid var(--line2); border-radius: 100px; padding: 1px 8px; margin-left: 8px;
-      vertical-align: middle; letter-spacing: .02em;
+      border: 1px solid var(--line2); border-radius: 100px; padding: 1px 8px; margin-left: 8px; vertical-align: middle;
     }
-    .chap-desc { grid-column: 2 / 3; font-size: 13.5px; color: var(--muted); line-height: 1.5; }
-    .go { grid-row: 1 / 3; font-size: 20px; color: var(--muted2); transition: transform .15s, color .15s; padding-left: 8px; }
+    .chap-desc { font-size: 13.5px; color: var(--muted); line-height: 1.5; margin-top: 3px; }
+    .go { flex-shrink: 0; font-size: 20px; color: var(--muted2); transition: transform .15s, color .15s; }
     .chap.star .chap-title::after {
       content: "중심 장"; font-size: 10.5px; font-weight: 800; color: #fff; background: var(--amber);
       border-radius: 100px; padding: 2px 8px; margin-left: 8px; vertical-align: middle; letter-spacing: .03em;
@@ -138,41 +129,31 @@
 
     /* ─────────── 저자 도구 ─────────── */
     .tools { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
-    .tool {
-      display: block; padding: 18px 20px; border: 1px solid var(--line); border-radius: 14px;
-      background: #fff; transition: border-color .15s, box-shadow .15s, transform .15s;
-    }
+    .tool { display: block; padding: 18px 20px; border: 1px solid var(--line); border-radius: 14px; background: #fff; transition: border-color .15s, box-shadow .15s, transform .15s; }
     .tool:hover { border-color: var(--amber); box-shadow: 0 8px 22px -12px rgba(124,58,8,.4); transform: translateY(-2px); }
-    .tool .rel {
-      font-size: 11px; font-weight: 800; letter-spacing: .04em; color: var(--amber-d);
-      text-transform: uppercase; margin-bottom: 8px;
-    }
+    .tool .rel { font-size: 11px; font-weight: 800; letter-spacing: .04em; color: var(--amber-d); text-transform: uppercase; margin-bottom: 8px; }
     .tool h3 { font-size: 1.02rem; font-weight: 700; color: var(--ink); margin-bottom: 4px; }
     .tool p { font-size: 13px; color: var(--muted); line-height: 1.55; }
     .tool .ext { font-size: 12.5px; color: var(--amber-d); font-weight: 600; margin-top: 10px; display: inline-block; }
     .tools-note { font-size: 12.5px; color: var(--muted2); margin-top: 14px; }
 
     /* ─────────── 푸터 ─────────── */
-    footer {
-      border-top: 1px solid var(--line); background: var(--wash);
-      font-size: 13px; color: var(--muted); line-height: 1.9;
-    }
+    footer { border-top: 1px solid var(--line); background: var(--wash); font-size: 13px; color: var(--muted); line-height: 1.9; }
     .foot-inner { max-width: 940px; margin: 0 auto; padding: 34px 24px 46px; }
     .foot-author { font-size: 14.5px; color: var(--ink); font-weight: 700; margin-bottom: 4px; }
     .foot-author a { color: var(--amber-d); }
     footer a { color: var(--amber-d); font-weight: 600; }
     footer a:hover { text-decoration: underline; }
 
-    /* 검색창(site-search.js가 .group 앞에 주입) */
     .ss-wrap { margin: 0 0 30px !important; }
 
     @media (max-width: 680px) {
       .quick, .tools { grid-template-columns: 1fr; }
-      .chap { grid-template-columns: 48px 1fr; }
-      .chap-no { font-size: 1.6rem; }
+      .chap-no { font-size: 1.6rem; width: 36px; }
       .go { display: none; }
-      .chap-desc { grid-column: 2 / 3; }
       .hero-inner { padding: 48px 24px 40px; }
+      .quick .a { margin-left: 0; }
+      .quick a { flex-wrap: wrap; gap: 4px 12px; }
     }
   </style>
 </head>
@@ -209,70 +190,75 @@
     <section class="group">
       <div class="sec-label">일곱 개 장, 한 흐름</div>
 
-      <!-- PHASE 1 -->
       <div class="phase">
-        <div class="phase-head">
-          <span class="phase-no">PHASE 1</span><span class="phase-name">이해</span><span class="phase-sub">왜, 무엇을</span>
-        </div>
+        <div class="phase-head"><span class="phase-no">PHASE 1</span><span class="phase-name">이해</span><span class="phase-sub">왜, 무엇을</span></div>
         <div class="track">
           <a class="chap" href="overview/AX_Overview_Chapter.html">
             <div class="chap-no">01</div>
-            <div class="chap-title">AX 개관과 공교육의 특수성</div>
-            <div class="chap-desc">전산화·DX·AX의 차이, 공교육이 기업과 다른 다섯 가지 조건</div>
+            <div class="chap-main">
+              <div class="chap-title">AX 개관과 공교육의 특수성</div>
+              <div class="chap-desc">전산화·DX·AX의 차이, 공교육이 기업과 다른 다섯 가지 조건</div>
+            </div>
             <div class="go">→</div>
           </a>
           <a class="chap" href="policy/Policy_Trends_Chapter.html">
             <div class="chap-no">02</div>
-            <div class="chap-title">국내외 정책·동향</div>
-            <div class="chap-desc">AI 디지털교과서의 부침, UNESCO·OECD와 주요 7개국의 전략</div>
+            <div class="chap-main">
+              <div class="chap-title">국내외 정책·동향</div>
+              <div class="chap-desc">AI 디지털교과서의 부침, UNESCO·OECD와 주요 7개국의 전략</div>
+            </div>
             <div class="go">→</div>
           </a>
         </div>
       </div>
 
-      <!-- PHASE 2 -->
       <div class="phase">
-        <div class="phase-head">
-          <span class="phase-no">PHASE 2</span><span class="phase-name">설계와 실행</span><span class="phase-sub">어떻게</span>
-        </div>
+        <div class="phase-head"><span class="phase-no">PHASE 2</span><span class="phase-name">설계와 실행</span><span class="phase-sub">어떻게</span></div>
         <div class="track">
           <a class="chap star" href="framework/Strategy_Framework_Chapter.html">
             <div class="chap-no">03</div>
-            <div class="chap-title">6대 영역 전략 프레임워크</div>
-            <div class="chap-desc">거버넌스·인프라·교원 역량·교육과정·평가·윤리 + 단계별 로드맵</div>
+            <div class="chap-main">
+              <div class="chap-title">6대 영역 전략 프레임워크</div>
+              <div class="chap-desc">거버넌스·인프라·교원 역량·교육과정·평가·윤리 + 단계별 로드맵</div>
+            </div>
             <div class="go">→</div>
           </a>
           <a class="chap" href="practice/Practice_Manual.html">
             <div class="chap-no">04</div>
-            <div class="chap-title">학교 현장 적용<span class="kind">매뉴얼+실습</span></div>
-            <div class="chap-desc">수업·행정 활용 레퍼런스와 초·중·고급 6개 실습 시나리오</div>
+            <div class="chap-main">
+              <div class="chap-title">학교 현장 적용<span class="kind">매뉴얼+실습</span></div>
+              <div class="chap-desc">수업·행정 활용 레퍼런스와 초·중·고급 6개 실습 시나리오</div>
+            </div>
             <div class="go">→</div>
           </a>
         </div>
       </div>
 
-      <!-- PHASE 3 -->
       <div class="phase">
-        <div class="phase-head">
-          <span class="phase-no">PHASE 3</span><span class="phase-name">전환의 조건</span><span class="phase-sub">지속·다음 단계</span>
-        </div>
+        <div class="phase-head"><span class="phase-no">PHASE 3</span><span class="phase-name">전환의 조건</span><span class="phase-sub">지속·다음 단계</span></div>
         <div class="track">
           <a class="chap" href="ethics/Ethics_Safety_Chapter.html">
             <div class="chap-no">05</div>
-            <div class="chap-title">윤리·안전·개인정보</div>
-            <div class="chap-desc">AI 윤리원칙, 위험, 연령 규칙, 도구 도입 체크리스트</div>
+            <div class="chap-main">
+              <div class="chap-title">윤리·안전·개인정보</div>
+              <div class="chap-desc">AI 윤리원칙, 위험, 연령 규칙, 도구 도입 체크리스트</div>
+            </div>
             <div class="go">→</div>
           </a>
           <a class="chap" href="agents/Agentic_AI_Chapter.html">
             <div class="chap-no">06</div>
-            <div class="chap-title">생성형을 넘어 에이전트로</div>
-            <div class="chap-desc">human-on-the-loop, 보이지 않는 노동의 함정, 학교 문화, 교사향 실습</div>
+            <div class="chap-main">
+              <div class="chap-title">생성형을 넘어 에이전트로</div>
+              <div class="chap-desc">human-on-the-loop, 보이지 않는 노동의 함정, 학교 문화, 교사향 실습</div>
+            </div>
             <div class="go">→</div>
           </a>
           <a class="chap" href="quiz/Assessment_Quiz.html">
             <div class="chap-no">07</div>
-            <div class="chap-title">점검 문항 / Q&amp;A<span class="kind">문제 풀이</span></div>
-            <div class="chap-desc">객관식·단답·서술형·개념 Q&amp;A 11문항으로 핵심을 점검</div>
+            <div class="chap-main">
+              <div class="chap-title">점검 문항 / Q&amp;A<span class="kind">문제 풀이</span></div>
+              <div class="chap-desc">객관식·단답·서술형·개념 Q&amp;A 11문항으로 핵심을 점검</div>
+            </div>
             <div class="go">→</div>
           </a>
         </div>
